@@ -1,0 +1,4 @@
+1. Handled missing values (NaN to 'Unknown')
+2. Removed duplicates
+3. Validated data integrity (salaries > 0)
+4. Created Boolean Indicator Column (salaries > median)

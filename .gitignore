@@ -1,4 +1,6 @@
 /.vscode
 /database
-docs/Pyramid_Chart.pptx
+Pyramid_Chart.pptx
 markdownTables.xlsx
+convertSlide.py
+Pyramid_Chart.pdf

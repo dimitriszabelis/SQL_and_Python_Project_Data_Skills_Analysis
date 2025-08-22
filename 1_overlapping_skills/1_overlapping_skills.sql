@@ -2,7 +2,7 @@
 
 Q: What are the most in-demand overlapping skills from all three data-related domains?
 
-1. Create one CTE for each one of the three data-related domains (Analytics, Science & Engineering - WhHERE Clause)
+1. Create one CTE for each one of the three data-related domains (Analytics, Science & Engineering - WHERE Clause)
     a. Each CTE includes 2 Inner Joins so that the job_postings_fact table can be linked to the skills_dim table, 
     which holds the names of the skills.
     b. Group by the skill_id
@@ -10,7 +10,8 @@ Q: What are the most in-demand overlapping skills from all three data-related do
     d. Order by the count DESC
 2. Then inner join all three CTEs to find the most in demand overlapping skills
     a. key = skill_id
-    b. Order by the total count of each skill DESC
+    b. Retrieve the skill name, the count of each skill at each domain and the total count.
+    c. Order by the total count of each skill in descending order.
 
 */
 -------------------------------------------------
@@ -81,7 +82,10 @@ WITH data_analytics AS (
 )
 -------------------------------------------------
 --2. Find the Common Elements of all CTEs
-
+/*
+Note: The order in which you perform the joins does not affect the final result, 
+because INNER JOIN is both commutative (A JOIN B = B JOIN A) and associative ((A JOIN B) JOIN C = A JOIN (B JOIN C).
+*/
 SELECT
     analytics.skill_name,
     analytics.analytics_skill_count,

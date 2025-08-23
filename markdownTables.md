@@ -1,26 +1,3 @@
-# 1_overlapping_skills
-
-Doc
-
-| Skill  | Total Count | Percentage of Job Postings (%) | Short Description                                                                 |
-|:------:|:-----------:|:------------------------------:|:---------------------------------------------------------------------------------|
-|  SQL   |    367649   |            51.3                | Standardized programming language designed for communicating with relational databases |
-| Python |    353763   |            49.4                | High-level programming language (data collection, preparation, analysis, and visualization) |
-
-readme
-
-| Skill  | Short Description                                                                 |
-|:------:|:---------------------------------------------------------------------------------:|
-|  SQL   | Standardized programming language designed for communicating with relational databases |
-| Python | High-level programming language (data collection, preparation, analysis, and visualization) |
-
-|   Skill   |                           Short Description                            |
-|:---------:|:---------------------------------------------------------------------|
-|   GenAI   | Generative AI (AI that can produce content based on the prompts of the user) |
-|    Git    | Collaboration and Version Control Tool                                 |
-| Linux/Bash | Operating System/Scripting Tool                                        |
-| MS Office | Excel, Word, and PowerPoint                                           |
-
 # 2_data_science_domain
 
 /docs

@@ -101,7 +101,7 @@ Brief Description of Each Skill:
 
 ### I. Query
 ---
-To identify the most in-demand skills for the Data Science domain, the Data Science CTE of the SQL script previously used to identify overlapping skills across all three domains ([1_overlapping_skills.sql](../1_overlapping_skills/1_overlapping_skills.sql) - 2nd CTE) was adapted to exclude all the skills the person will have learned by the time this step is reached (in order to move on from the first to the second level of the [pyramid](../Pyramid_Chart.png)):
+To identify the most in-demand skills for the Data Science domain, the **Data Science CTE** of the SQL script previously used to identify overlapping skills across all three domains ([1_overlapping_skills.sql](../1_overlapping_skills/1_overlapping_skills.sql) - 2nd CTE) was adapted to exclude all the skills the person will have learned by the time this step is reached (in order to move on from the *first* to the *second* level of the [pyramid](../Pyramid_Chart.png)):
 - `WHERE skill_name NOT IN ('sql','python')`
 
 [2_data_science_domain.sql](../2_data_science_domain/2_data_science_domain.sql)
@@ -109,8 +109,9 @@ To identify the most in-demand skills for the Data Science domain, the Data Scie
 ### II. Notebook
 ---
 
-In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([overlapping_skills_bar_charts.ipynb](../1_overlapping_skills/overlapping_skills_bar_charts.ipynb)) to generate the visualizations of the Data Science domain solely by changing two things:
+In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([overlapping_skills_bar_charts.ipynb](../1_overlapping_skills/overlapping_skills_bar_charts.ipynb)) to generate the visualizations of the Data Science domain solely by changing three things:
 - The CSV files read now refer solely to the Data Science domain.
+- The new job postings pool (= total number of job openings for this domain) is equal to 209,802 for the Data Science domain.
 - Only horizontal bar charts are present (not stacked bar charts), because the files read refer solely to the Data Science domain (rather than to all three domains). The former will hold true for all other levels of the [pyramid](../Pyramid_Chart.png), because each one of them will refer to a specific domain.
 
 <u>Note that</u>:
@@ -154,7 +155,7 @@ Regarding AWS and Azure, they are *alternative* cloud platforms with distinct ec
 
 In contrast, PyTorch and TensorFlow are *complementary* machine learning skills, because they both focus on deep learning frameworks with overlapping yet distinct strengths, making it beneficial to learn them in tandem for a well-rounded understanding.
 
-Considering the above, the following table shows the curated list of the chosen skills for the Data Science domain: 
+Considering the above, the following table shows the curated list of the chosen skills for the **Data Science** domain: 
 
 | Chosen Skill           | Short Description                     |
 |:---------------------|:-------------------------------------|
@@ -166,6 +167,76 @@ Considering the above, the following table shows the curated list of the chosen 
 
 ## [Data Engineering Skills](../3_data_engineering_domain/)
 
+### Q3. What are the most in-demand skills in the Data Engineering domain?
+
+### I. Query
+---
+To identify the most in-demand skills for the Data Engineering domain, the **Data Engineering CTE** of the SQL script previously used to identify overlapping skills across all three domains ([1_overlapping_skills.sql](../1_overlapping_skills/1_overlapping_skills.sql) - 2nd CTE) was adapted to exclude all the skills the person will have learned by following the **two previous steps** (in order to move on from the *second* to the *third* level of the [pyramid](../Pyramid_Chart.png)):
+- `WHERE skill_name NOT IN ('sql','python','r', 'tableau', 'aws', 'spark', 'azure', 'tensorflow','pytorch')`
+
+[3_data_engineering_domain.sql](../3_data_engineering_domain/3_data_engineering_domain.sql)
+
+### II. Notebook
+
+In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations of the Data Engineering domain solely by changing the CSV files read, the job postings pool (231,371 for this domain), and the respective texts making up the figure.
+
+[data_engineering_skills_bar_charts.ipynb](../3_data_engineering_domain/data_engineering_skills_bar_charts.ipynb)
+
+### III. Interpretation
+---
+<u>Bar chart - All Skills</u>:
+
+<img src="../3_data_engineering_domain/assets/data_engineering_skills.png" width="800" />
+
+<br>
+
+The bar chart shows the top 10 most in-demand skills for the Data Engineering domain as a percentage of the total number of job postings referring to the same domain.
+
+Once again, Python & SQL occupy the top positions, both appearing in approximately 60% of all Data Engineering job postings. Besides that, AWS, Azure, and Spark appear as well, and all of them have percentages that are greater than or equal to 30% of the total Data Engineering job postings pool. All the aforementioned skills and every other skill that was addressed in the two previous levels of the [pyramid](../Pyramid_Chart.png) ([WHERE Clause](#i-query-2)) are excluded from the analysis of the current level. The figure that only illustrates the top 10 *unaddressed* skills for this level is given below:
+
+<u>Bar chart - Unaddressed Skills</u>:
+
+<img src="../3_data_engineering_domain/assets/data_engineering_skills_where.png" width="800" />
+
+<br>
+
+All the unaddressed skills for this domain alongside with their counts, percentages, and short descriptions are listed in the table below: 
+
+| Unaddressed Skill   | Data Engineering Skill Count | Percentage of Data Engineering Job Postings (%) | Short Description                                                                 |
+|:-------------:|:----------------------------:|:------------------------------------------------:|:----------------------------------------------------------------------------------|
+| Java       | 45814                        |   19.8                                            | General-purpose programming language used for building scalable applications and processing large datasets.                  |
+| Kafka      | 38890                        |   16.8                                            |  Distributed event streaming platform used for building real-time data pipelines and streaming applications.                 |
+| Scala        |            37453            |                       16.2                       | High-level programming language used with Apache Spark for big data processing.   |
+| Hadoop     | 36762                        | 15.9                                               | Open-source framework for distributed storage and processing of large datasets.                   |
+| Snowflake  | 35821                        |     15.5                                          | Cloud-based data warehousing platform designed for scalable storage, processing, and analytic solutions.                  |
+| Databricks   |            35353            |                       15.3                       | Cloud-based data engineering platform built on Apache Spark.                      |
+| Airflow      |            34279            |                       14.8                       | Workflow automation tool designed for managing complex data pipelines.            |
+| NoSQL        |            29000            |                       12.5                       | Category of database management systems that are designed for managing unstructured or semi-structured data (MongoDB/Cassandra). |
+| GCP        | 28550                        |    12.3                                           | The Google Cloud Platform offering data storage, processing, and analytics services for scalable data engineering solutions.                  |
+| Redshift   | 24807                        |    10.7                                           | Amazon's fully managed cloud data warehouse service designed for large-scale data storage and fast query performance.                   |
+
+<br>
+
+The demand for most skills is comparable, so additional criteria are needed to make a decision about which skills to select.
+
+To begin with, Scala will be selected instead of Java for its functional programming capabilities and its compatibility with Spark for big data processing, so that the person can build upon the skills they will already have learned (Spark was one of the chosen skills of the previous level). In other words, at this stage it would be better to complement the skills they already know instead of learning a new language and then also having to learn Hadoop in order to do big data processing (because Hadoop is based on Java). Since Java is not selected and Hadoop is built primarily using Java, Hadoop is also not selected at this stage.
+
+After that, Databricks will be selected over Snowflake, because of the advanced data engineering and machine learning capabilities of the former. These platforms are both cloud-based and proprietary, and they are often viewed as alternative platforms serving different purposes. On the one hand, Databricks is a unified analytics platform that focuses heavily on big data processing, data engineering, and machine learning workloads. On the other hand, Snowflake is mainly a data warehouse used for SQL-based analytics and business intelligence workloads. In reality, both platforms can be used, Databricks for ETL (Extract, Transform, Load) and ML operations and Snowflake for efficient data warehousing, but this goes beyond the scope of this project (Databricks comes with data warehousing capabilities through Databricks SQL and its lakehouse architecture, thus Databricks alone could suffice). Finally, since Redshift is a cloud-based data warehouse like Snowflake, it is also not selected.
+
+Besides that, GCP (Google Cloud Platform) is also not chosen, because it is an alternative to AWS, which was one of the chosen skills of the previous level.
+
+Moreover, Airflow is chosen instead of Kafka, because Airflow handles batch workflows, which are generally easier to implemenet and manage than real-time streams (handled by Kafka). In reality, both tools can be used (batch vs real-time workflows), but, since the person wants to learn the basic data engineering skills, Airflow is selected for simplicity here.
+
+Lastly, since NoSQL is dissimilar to any other unaddressed skill, it is definitely chosen. NoSQL refers to a category of database management systems that are designed to handle unstructured and semi-structured data. Two of the most common NoSQL database management systems are MongoDB and Cassandra. On the one hand, MongoDB (19th place in [data_engineering_skills.csv](../3_data_engineering_domain/data/data_engineering_skills.csv)) is a document-oriented NoSQL database that stores data in JSON-like documents. On the other hand, Cassandra (38th place in [data_engineering_skills.csv](../3_data_engineering_domain/data/data_engineering_skills.csv)) is a wide-column store NoSQL database, designed for handling large amounts of data across many servers with high availability.
+
+Considering the above, the following table shows the curated list of the chosen skills for the **Data Engineering** domain:
+
+| Chosen Skill           | Short Description                     |
+|:-------------:|:----------------------------------------------------------------------------------|
+| Scala        | High-level programming language used with Apache Spark for big data processing.   |
+| Databricks   | Cloud-based data engineering platform built on Apache Spark.                      |
+| Airflow      | Workflow automation tool designed for managing complex data pipelines.            |
+| NoSQL        | Category of database management systems that are designed for managing unstructured or semi-structured data (MongoDB/Cassandra). |
 
 
 ## [Senior Data Scientist Skills](../4_senior_data_scientist/4_I_most_in_demand_skills/)

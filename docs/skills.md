@@ -16,7 +16,7 @@ The following Python script reads the CSV file containing the skill counts of th
 
 ### III. Interpretation
 ---
-<u>Horizontal bar chart</u>:
+<u>Horizontal Bar Chart</u>:
 
 <img src="../1_overlapping_skills/assets/overlapping_skills_barh.png" width="800" />
 
@@ -36,7 +36,7 @@ Two skills dominate the figure by a significant margin, namely SQL and Python, e
         - Python Basics (Basic syntax elements and data types, control flow, and functions)
         - Libraries (NumPy, Pandas, and Matplotlib)
 
-<u>Stacked bar chart</u>:
+<u>Stacked Bar Chart</u>:
 
 <img src="../1_overlapping_skills/assets/overlapping_skills_stacked_barh.png" width="800" />
 
@@ -97,7 +97,72 @@ Brief Description of Each Skill:
 
 ## [Data Science Skills](../2_data_science_domain/)
 
+### Q2. What are the most in-demand skills in the Data Science domain?
 
+### I. Query
+---
+To identify the most in-demand skills for the Data Science domain, the Data Science CTE of the SQL script previously used to identify overlapping skills across all three domains ([1_overlapping_skills.sql](../1_overlapping_skills/1_overlapping_skills.sql) - 2nd CTE) was adapted to exclude all the skills the person will have learned by the time this step is reached (in order to move on from the first to the second level of the [pyramid](../Pyramid_Chart.png)):
+- `WHERE skill_name NOT IN ('sql','python')`
+
+[2_data_science_domain.sql](../2_data_science_domain/2_data_science_domain.sql)
+
+### II. Notebook
+---
+
+In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([overlapping_skills_bar_charts.ipynb](../1_overlapping_skills/overlapping_skills_bar_charts.ipynb)) to generate the visualizations of the Data Science domain solely by changing two things:
+- The CSV files read now refer solely to the Data Science domain.
+- Only horizontal bar charts are present (not stacked bar charts), because the files read refer solely to the Data Science domain (rather than to all three domains). The former will hold true for all other levels of the [pyramid](../Pyramid_Chart.png), because each one of them will refer to a specific domain.
+
+<u>Note that</u>:
+- The phrase "**Unaddressed** Skills" refers to skills that the person *hasn't already learned*, and which are *dissimilar* to other skills that the person has already learned.
+
+[data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)
+
+### III. Interpretation
+---
+<u>Bar chart - All Skills</u>:
+
+<img src="../2_data_science_domain/assets/data_science_skills.png" width="800" />
+
+<br>
+
+The bar chart shows the top 12 most in-demand skills for the Data Science Domain as a percentage of the total number of job postings referring to the same domain.
+
+Once again, Python & SQL occupy the top positions, appearing in 66.7% and 46.6% of all Data Science job postings. As these two skills were addressed in the first level of the [pyramid](../Pyramid_Chart.png), they are excluded from the analysis of the current level. The figure that only illustrates the top 10 *unaddressed* skills for this level is given below (same figure, but without Python & SQL):
+
+<u>Bar chart - Unaddressed Skills</u>:
+
+<img src="../2_data_science_domain/assets/data_science_skills_where.png" width="800" />
+
+<br>
+
+Excluding Excel, which has been mentioned as a complementary skill, and Java & Hadoop both of which have a percentage that is smaller than 10% of the Data Science job postings pool and which are dissimilar to other skills, the rest of the unaddressed skills are listed in the table below:
+
+| Unaddressed Skill   | Data Science Skill Count | Percentage of Data Science Job Postings (%) | Short Description          |
+|:-------------:|:-----------------------:|:-------------------------------------------:|:---------------------------|
+| R            |          72526         |                     34.6                    | Statistical programming language |
+| Tableau      |          35472         |                     16.9                    | Data Visualization Tool     |
+| AWS          |          33779         |                     16.1                    | Cloud Platform              |
+| Spark        |          30991         |                     14.8                    | Big Data Framework          |
+| Azure        |          27227         |                     13.0                    | Cloud Platform             |
+| TensorFlow   |          24261         |                     11.6                    | Deep Learning Framework     |
+| PyTorch      |          19461         |                     9.3                     | Deep Learning Framework     |
+
+To begin with, R, Tableau, and Spark are all skills that haven't been previously addressed, and which are dissimilar to other skills in the table. Hence, they are definitely selected.
+
+Regarding AWS and Azure, they are *alternative* cloud platforms with distinct ecosystems, thus, in reality, most people will choose to learn one or the other rather than both. Hence, AWS is chosen here, due to its market dominance compared to Azure.
+
+In contrast, PyTorch and TensorFlow are *complementary* machine learning skills, because they both focus on deep learning frameworks with overlapping yet distinct strengths, making it beneficial to learn them in tandem for a well-rounded understanding.
+
+Considering the above, the following table shows the curated list of the chosen skills for the Data Science domain: 
+
+| Chosen Skill           | Short Description                     |
+|:---------------------|:-------------------------------------|
+| R                    | Statistical programming language      |
+| Tableau              | Data Visualization Tool              |
+| AWS           | Cloud Platforms                      |
+| Spark                | Big Data Framework                   |
+| TensorFlow & PyTorch | Deep Learning Frameworks             |
 
 ## [Data Engineering Skills](../3_data_engineering_domain/)
 

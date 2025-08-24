@@ -241,7 +241,68 @@ Considering the above, the following table shows the curated list of the chosen 
 
 ## [Senior Data Scientist Skills](../4_senior_data_scientist/4_I_most_in_demand_skills/)
 
+### Q4. What are the most in-demand skills for the Senior Data Scientist role?
 
+### I. Query
+---
+To identify the most in-demand skills for the Senior Data Scientist role, the SQL script previously used to identify the most in-demand skills for the *entire Data Science domain* ([2_data_science_domain.sql](../2_data_science_domain/2_data_science_domain.sql)) was adapted to both include solely the Senior Data Scientist role and exclude all the skills the person will have learned by following the **three** previous steps (in order to move on from the *third* to the *fourth* level of the [pyramid](../Pyramid_Chart.png)):
+```sql
+WHERE
+    jpf.job_title_short = 'Senior Data Scientist' AND
+    skills.skills NOT IN ('sql','python',
+    'r', 'tableau', 'aws', 'spark', 'azure', 'tensorflow','pytorch',
+    'scala','databricks','airflow','nosql','mongodb','cassandra', 'gcp','redshift')
+```
+
+[4_I_most_in_demand_skills.sql](../4_senior_data_scientist/4_I_most_in_demand_skills/4_I_most_in_demand_skills.sql)
+
+### II. Notebook
+---
+
+In the same manner, the following script was adapted from the respective Jupyter Notebook of question Q2 ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations solely for the Senior Data Scientist role by changing the CSV files read, the job postings pool (37,076 for this role), and the respective texts making up the figure.
+
+[senior_DS_skills_bar_charts.ipynb](../4_senior_data_scientist/4_I_most_in_demand_skills/senior_DS_skills_bar_charts.ipynb)
+
+### III. Interpretation
+---
+
+<u>Bar chart - All Skills</u>:
+
+<img src="../4_senior_data_scientist/4_I_most_in_demand_skills/assets/senior_DS_skills.png" width="800" />
+
+<br>
+
+The bar chart shows the top 10 most in-demand skills for the Senior Data Scientist role as a percentage of the total number of job postings referring to the same role.
+
+The analysis shows that the most in-demand skills for the Senior Data Scientist role are the same as the most in-demand skills for the entire Data Science domain: Python, SQL , R, AWS/Azure, Spark, Tensorflow/Pytorch, Tableau. Hence, the current analysis will focus on niche skills for this particular role.
+
+The figure that only illustrates the top 10 *unaddressed* skills for this level is given below:
+
+<u>Bar chart - Unaddressed Skills</u>:
+
+<img src="../4_senior_data_scientist/4_I_most_in_demand_skills/assets/senior_DS_skills_where.png" width="800" />
+
+<br>
+
+First, Pandas, NumPy, and Scikit-learn are all skills the person will already have learned by learning Python for Data Science (level 1 of the [pyramid](../Pyramid_Chart.png)) and Machine Learning with Python (TensorFlow & PyTorch - Level 2 of the pyramid). Hence, they are filtered out.
+
+Second, both Excel and Git have already been addressed as complementary skills (level 1).
+
+Third, Power BI, which is a data visualization tool, is an alternative to Tableau, which has also been addressed (level 2).
+
+Fourth, Go, a programming language, holds the smallest percentage of all the skills in the previous diagram and thus, will be excluded from the list of recommended skills of this level.
+
+Fifth, Java and Hadoop will both be selected here. On the one hand, Java is a general-purpose programming language used in Data Science for building scalable applications. It is often utilized in big data technologies like Hadoop for processing large datasets. On the other hand, Hadoop, which is built primarily using Java, is an open-source framework for distributed storage and processing of large datasets (HDFS for storing and MapReduce for processing large datasets). It supports various languages through APIs (e.g., Python, R, Scala), and it is the host of many many big data processing frameworks, such as Pig, Hive, Giraph, Storm, Flink, and HBase. Spark is also a part of the Hadoop Ecosystem, and it is mainly used for fast data processing and in-memory computations, whereas Hadoop is generally slower due to its reliance on disk-based storage.
+
+Finally, SAS (Statistical Analysis System) is a comprehensive statistical software suite used for advanced data analytics. It will be included in the selected skills for this level; however, there is a condition to that. By this stage, the person will already have learned R, thus from a skills perspective there is no need to cover SAS, since they are alternative tools.R, on the one hand, is an open source programming language that is mainly used in academia and data science for statistical analysis, data visualization, and machine learning tasks. SAS, on the other hand, is a proprietary tool primarily used in enterprise and regulated settings (e.g., healthcare and finance industries) for statistical data analysis. Hence, when the person reaches this point on their journey, they are advised to include SAS only if their work environment is part of enterprise or regulated settings. 
+
+Considering the above, the following table shows the curated list of the chosen skills for the **Senior Data Scientist role**:
+
+| Chosen Skill   | Short Description                                                                 |
+|:-------------:|:----------------------------------------------------------------------------------|
+| SAS          | Statistical Software Suite                                                          |
+| Hadoop       | Big data framework designed for distributed storage and processing of data.       |
+| Java         | High-level programming language designed for building high performance systems. |
 
 ## [Top-Paying Skills for the Senior Data Scientist Role](../4_senior_data_scientist/4_III_highest_paying/)
 

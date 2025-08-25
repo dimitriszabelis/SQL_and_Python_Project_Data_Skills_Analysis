@@ -178,7 +178,7 @@ To identify the most in-demand skills for the Data Engineering domain, the **Dat
 
 ### II. Notebook
 
-In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations of the Data Engineering domain solely by changing the CSV files read, the job postings pool (231,371 for this domain), and the respective texts making up the figure.
+In the same manner, the following script was adapted from the respective Jupyter Notebook of the previous question ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations of the Data Engineering domain solely by changing the CSV files read, the job postings pool (231,371 for this domain), and the respective texts making up the figures.
 
 [data_engineering_skills_bar_charts.ipynb](../3_data_engineering_domain/data_engineering_skills_bar_charts.ipynb)
 
@@ -200,7 +200,7 @@ Once again, Python & SQL occupy the top positions, both appearing in approximate
 
 <br>
 
-All the unaddressed skills for this domain alongside with their counts, percentages, and short descriptions are listed in the table below: 
+All the unaddressed skills for this domain alongside their counts, percentages, and short descriptions are listed in the table below: 
 
 | Unaddressed Skill   | Data Engineering Skill Count | Percentage of Data Engineering Job Postings (%) | Short Description                                                                 |
 |:-------------:|:----------------------------:|:------------------------------------------------:|:----------------------------------------------------------------------------------|
@@ -259,7 +259,7 @@ WHERE
 ### II. Notebook
 ---
 
-In the same manner, the following script was adapted from the respective Jupyter Notebook of question Q2 ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations solely for the Senior Data Scientist role by changing the CSV files read, the job postings pool (37,076 for this role), and the respective texts making up the figure.
+In the same manner, the following script was adapted from the respective Jupyter Notebook of question Q2 ([/data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations solely for the Senior Data Scientist role by changing the CSV files read, the job postings pool (37,076 for this role), and the respective texts making up the figures.
 
 [senior_DS_skills_bar_charts.ipynb](../4_senior_data_scientist/4_I_most_in_demand_skills/senior_DS_skills_bar_charts.ipynb)
 
@@ -306,3 +306,94 @@ Considering the above, the following table shows the curated list of the chosen 
 
 ## [Top-Paying Skills for the Senior Data Scientist Role](../4_senior_data_scientist/4_III_highest_paying/)
 
+### Q5.A. What are the highest-paying Senior Data Scientist jobs?
+---
+Completing this task is an intermediate step toward associating the highest-paying Senior Data Scientist jobs with the respective skills on the next and final step of the analysis. This step is necessary because the job ids of those jobs are needed so that the association can be established.
+
+### Query
+---
+This query is composed of a single CTE and a simple query. The CTE uses an inner join to access the names of the companies that offer at least one job. Then, filtering occurs so that only Senior Data Scientist jobs are extracted and only job postings that mention a salary are taken into account (```salary_year_avg IS NOT NULL```). Finally, the result set is ordered by the annual salary in descending order. 
+
+[highest_paying_seniorDS_jobs.sql](../4_senior_data_scientist/4_III_highest_paying/a_highest_paying_seniorDS_jobs/scripts/highest_paying_seniorDS_jobs.sql)
+
+### Q5.B. What are the top-paying skills required for these top-paying jobs?
+---
+As mentioned before, this final step of the analysis utilizes the CTE of the previous question. However, in this case, there are two main differences. The first difference alongside the main query that retrieves the desired skills are implemented in the first SQL script of this subsection. The second SQL script extends the functionality of the first by adding the second distinguishing factor while keeping everything else the same.
+
+### I. Query 1
+---
+The first difference is that a window function is added so that the average salary over all rows can be calculated (mean of the salary_year_avg column, which is the column that holds the annual salaries for the offered jobs).
+
+This average is used in the WHERE clause of the main query to only take into account salaries that are higher than the average salary of the salary column, and thus, to extract the top-paying Senior Data Scientist jobs.
+- The analysis of the salary distribution ([diagrams.ipynb](../4_senior_data_scientist/4_III_highest_paying/a_highest_paying_seniorDS_jobs/notebooks/diagrams.ipynb)) showed that the mean is almost equal to the median (salary_year_avg: mean = 153653.4, median = 155000.0), thus using either average type is possible here. 
+
+The main query, of course, retrieves the skills associated with the highest-paying Senior Data Scientist jobs, but also both their demand and the associated salary for each specific skill. Only skills with a count that is higher than 25 are included and most recommended skills are approximately of the same count (27-34) except Go, which has a count that is equal to 85. Finally, as before, already covered skills are excluded.
+
+Note that the skill counts here are small, because the resulting job postings pool for this query is also small. More specifically, the total number of job openings without applying the greater-than-average-salary criterion is equal to 1,685, because most job postings do not mention a salary. Hence, the ```salary_year_avg IS NOT NULL``` criterion significantly restricts the job postings pool. When the greater-than-average-salary criterion is also applied, this number shrinks even more to 868 job openings. 
+
+[i_top_paying_skills.sql](../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/scripts/i_top_paying_skills.sql)
+
+### II. Query 2
+---
+The second difference is that two additional CTEs are created in order to remove the few duplicate rows that exist in the result set of the first CTE. The duplicates were discovered at the end of the project while analyzing the dataset of the salary distribution (shown in the [data cleaning step](../4_senior_data_scientist/4_III_highest_paying/a_highest_paying_seniorDS_jobs/notebooks/data_cleaning.ipynb) of 4_III.a. before creating the histogram and the box plot). They are definitely a limitation of the current project and they should be analyzed separately in a future project. That is, it should be determined whether the few duplicates are due to spam or due to the same job opening being posted throughout the year at regular intervals to attract multiple candidates. Nevertheless, as shown in [data cleaning](../4_senior_data_scientist/4_III_highest_paying/a_highest_paying_seniorDS_jobs/notebooks/data_cleaning.ipynb), the error is not expected to be large, as there are only a few duplicates that do not significantly affect the results.
+
+The removal of the duplicate rows is accomplished by adding a window function to the second CTE of the current SQL script ('remove_duplicates' CTE) and then, using the result of that CTE to solely extract rows that are unique (3rd CTE). More specifically, the second CTE creates a new column named 'row_num' containing the unique number the ROW_NUMBER() window function assigns to each row within a partition (group of the same duplicate rows). Then, the third CTE extracts all columns from the second CTE, but only the first row of each partition (```WHERE row_num = 1```), effectively removing any duplicates (row_num<>1).
+
+[ii_top_paying_skills_without_duplicates.sql](../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/scripts/ii_top_paying_skills_without_duplicates.sql)
+
+### III. Notebook
+---
+In the same manner as before, the following script was adapted from the respective Jupyter Notebook of question Q2 ([data_science_skills_bar_charts.ipynb](../2_data_science_domain/data_science_skills_bar_charts.ipynb)) to generate the visualizations solely for the skills associated with the top-paying Senior Data Scientist jobs by changing the CSV files read (files both with and without the duplicates are included to determine whether there is a difference), the respective texts making up the figures, and the x axis to refer to the annual salary in US dollars (so that each respective skill can be associated with the average annual salary of the top-paying Senior Data Scientist jobs for that skill).
+
+[top_paying_skills_bar_charts.ipynb](../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/top_paying_skills_bar_charts.ipynb)
+
+### IV. Interpretation
+---
+<u>Bar chart - All Skills</u>:
+
+<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_skills_bar_charts.png" width="800" />
+
+<br>
+
+The bar chart shows the top 15 top-paying skills for the Senior Data Scientist role. Once again, the figure is dominated by skills that already have been addressed (Hadoop, Spark, Airflow, Java, Scala, R, Python, SQL, & Tableau). However, there are several skills that remain unaddressed. The remaining unaddressed skills for this level are shown in the figure below for clarity: 
+
+<u>Bar chart - Unaddressed Skills</u>:
+
+<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_unaddressed_skills_bar_charts.png" width="800" />
+
+<br>
+
+These unaddressed skills, along with their demand and associated average salary, are summarized in the table below:
+
+| Unaddressed Skill | Demand | Average Salary Per Skill ($) |
+|:----------:|:------:|:------------------------:|
+| C++ | 29 | 193,000 |
+| Go | 85 | 192,000 |
+| C | 34 | 180,000 |
+| Flow | 29 | 180,000 |
+| Keras | 27 | 180,000 |
+| Docker | 34 | 168,000 |
+
+To begin with, C++ is selected over C, because C++ is generally preferred in Data Science for its high-performance, object-oriented features, strong type checking and exception handling, and advanced abstractions and libraries. For example, C++ is used for developing high-performance applications, such as building libraries like Tensorflow and PyTorch. In contrast, C is primarily used in systems programming.
+
+Following that, all remaining skills are selected, as they are commonly used in Data Science:
+- Go is used for processing large datasets and complex computations thanks to its simplicity, performance, and built-in concurrency support (concurrency is about managing tasks that may run at overlapping times).
+- Flow refers to flow tools like Apache NiFi, which provides a visual interface for managing streaming data flows that involve complex data ingestion and processing tasks.
+- Keras, a high-level neural networks API, is used for building, training, and deploying neural networks in Python.
+- Docker, a containerization platform, allows data scientists to package their data products along with all their dependencies into lightweight, portable containers, enabling reproducible execution across different systems and simplifying the deployment of those products (e.g., containerizing a machine learning model with its dependencies to ensure it runs the same way on different machines).
+
+Considering the above, the following table shows the curated list of the **chosen top-paying skills** for the Senior Data Scientist role alongside the associated average salary and a short description of each skill:
+
+| Chosen Skill | Average Salary Per Skill ($) | Short Description |
+|:----------:|:------------------------:|-----------------|
+| C++ | 193,000 | High-performance programming language used for building data science tools. |
+| Go | 192,000 | Modern programming language for concurrent, large-scale data processing. |
+| Flow | 180,000 | Flow tools, like Apache NiFi, for automating data flows. |
+| Keras | 180,000 | API for building and training neural networks. |
+| Docker | 168,000 | Platform for packaging applications with all their dependencies. |
+
+## Pyramid
+
+The analysis is summarized in the following pyramid chart, which depicts the project scenario alongside the recommended skills for each stage of the person's learning journey:
+
+![Pyramid_Chart](../Pyramid_Chart.png)

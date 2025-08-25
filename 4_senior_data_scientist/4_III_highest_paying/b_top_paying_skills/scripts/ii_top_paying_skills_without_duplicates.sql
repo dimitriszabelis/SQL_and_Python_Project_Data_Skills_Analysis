@@ -4,7 +4,7 @@ Q: III.b. What are the top-paying skills required for these top-paying jobs?
 * Remove the small number of duplicates that exist in the dataset to determine if the error they cause is significant.
 
 1. Use the CTE of the previous example, but 
-i. Add a window function to calculate the AVG(salary_year_avg).This function will be used on the WHERE clause of
+i. Add a window function to calculate the AVG(salary_year_avg). This function will be used on the WHERE clause of
 the main query to filter out the rows that have a salary that is lower than the average salary of the salary_year_avg column.
 ii. Remove the maximum of the dataset (largest outlier = $890,000) so that it won't affect the AVG(jpf.salary_year_avg).
 
@@ -18,15 +18,15 @@ i. Write 2 Inner Joins so that the 'without_duplicates' (!) table can be linked 
 ii. WHERE clause: Include only the top-paying jobs and exclude the skills the person has already covered and those similar to them.
 iii. Group by skill name.
 iv. Having count(job_id) > 25 (Include only skills that are in-demand)
-v. Order by AVG(salary_year_avg) DESC; to get the top-paying skills
+v. Order by AVG(salary_year_avg) DESC; to get the top-paying skills.
 vi. Retrieve the skill name, the count of each skill, and the average salary associated with each skill.
 
 4. Notes:
-i. AVG(jpf.salary_year_avg) = Average salary of the annual salary column, jpf.salary_year_avg, for the 'highest_paying_jobs' CTE.
-ii. ROUND(AVG(hpj_wd.salary_year_avg),-3) AS avg_salary_per_skill = Average salary associated with each skill of the top-paying Senior Data Analyst jobs.
-iii. The analysis of the salary distribution of the previous step (4_III.a.) showed that the mean is slightly smaller than the median:
-salary_year_avg: mean = 153,653.4 < median = 155,000.0 < mode = 157,500.0 . Hence, the mean of the distribution will be used in
-this script to extract only the job postings that are associated with the highest salaries.
+i. AVG(jpf.salary_year_avg) OVER () AS overall_avg_salary -- Average of the salary_year_avg column (column that holds the annual salaries for the offered jobs)
+ii. ROUND(AVG(salary_year_avg),-3) AS avg_salary_per_skill --Average salary associated with each top-paying skill (AVG(hpj.salary_year_avg) with Group By)
+iii. The analysis of the salary distribution of 4_III.a. showed that the mean is almost equal to the median (salary_year_avg: mean = 153653.4, median = 155000.0), thus
+    using either average type is possible here. In this script, the mean of the distribution is used to extract only the job postings that are associated
+    with the highest salaries.
 
 */
 --------------------------------------------------------------------------------------------------------------------

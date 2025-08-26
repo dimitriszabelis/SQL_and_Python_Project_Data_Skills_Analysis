@@ -351,7 +351,7 @@ In the same manner as before, the following script was adapted from the respecti
 ---
 <u>Bar chart - All Skills</u>:
 
-<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_skills_bar_charts.png" width="800" />
+<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_skills_bar_charts.png" width="900" />
 
 <br>
 
@@ -359,7 +359,7 @@ The bar chart shows the top 15 top-paying skills for the Senior Data Scientist r
 
 <u>Bar chart - Unaddressed Skills</u>:
 
-<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_unaddressed_skills_bar_charts.png" width="800" />
+<img src="../4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_unaddressed_skills_bar_charts.png" width="900" />
 
 <br>
 
@@ -396,4 +396,4 @@ Considering the above, the following table shows the curated list of the **chose
 
 The analysis is summarized in the following pyramid chart, which depicts the project scenario alongside the recommended skills for each stage of the person's learning journey:
 
-![Pyramid_Chart](../Pyramid_Chart.png)
+<img src="../Pyramid_Chart.png" width="1000" />

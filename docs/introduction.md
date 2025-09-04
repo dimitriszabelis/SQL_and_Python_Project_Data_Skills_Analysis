@@ -95,11 +95,11 @@ Please note that the remaining 71,471 job openings, which would complete the tot
 
 - Finally, they will decide to **specialize** in the Data Science domain and hence, they will choose to learn the most in-demand skills and the top skills required for the highest-paying jobs, specifically for the senior position in their domain.
 
-## Project Deliverables
+## Key Questions
 
 This project will help that person carve their own career path by providing all the necessary information they need throughout their learning journey.
 
-<u>Deliverables</u>:
+<u>Key Questions to Address</u>:
 - What are the most in-demand **overlapping** skills from all three data-related domains?
 - What are the most in-demand skills in the Data **Science** domain?
 - What are the most in-demand skills in the Data **Engineering** domain?

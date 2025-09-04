@@ -392,7 +392,7 @@ Considering the above, the following table shows the curated list of the **chose
 | Keras | 180,000 | API for building and training neural networks. |
 | Docker | 168,000 | Platform for packaging applications with all their dependencies. |
 
-## Pyramid
+## Pyramid Chart
 
 The analysis is summarized in the following pyramid chart, which depicts the project scenario alongside the recommended skills for each stage of the person's learning journey:
 

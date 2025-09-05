@@ -103,25 +103,33 @@ Python was the programming language that was used to primarily visualize the dat
 
 <h4 style="text-align:left;">1. <u>Overlapping Skills</u></h4>
 
-<u>Horizontal Bar Chart</u>:
+To identify the most sought-after overlapping skills across the three data-related domains, a SQL script computed skill counts per domain and joined them to find the shared high-demand skills, while a Python script visualized these findings with bar charts showing overall demand percentages and domain-specific distributions.
 
 <img src="1_overlapping_skills/assets/overlapping_skills_barh.png" width="800" />
 
-<br>
-
-<u>Stacked Bar Chart</u>:
+*Horizontal bar chart visualizing the demand for overlapping skills.*
 
 <img src="1_overlapping_skills/assets/overlapping_skills_stacked_barh.png" width="800" />
 
-<br>
+*Horizontal stacked bar chart visualizing the distribution of skill counts by domain percentage for overlapping skills.*
+
+The diagrams clearly indicate that SQL and Python lead the list of the most sought-after overlapping skills, each featured in about 50% of job listings. All remaining skills show significantly lower overall prevalence and vary considerably across specific data-related domains (e.g., R is predominantly sought in the data science domain).
 
 <h4 style="text-align:left;">2. <u>Data Science Skills</u></h4>
 
-<u>Bar chart - Unaddressed Skills</u>:
+The most in-demand Data Science skills are retrieved and visualized in the same manner as before. The only two differences here are that:
+- All subsequent diagrams will solely display unaddressed skills, that is, skills that the person hasn't already learned, and which are dissimilar to other skills that the person has already learned, and that 
+- The diagrams will be bar charts (not stacked bar charts), because all other stages of the project scenario refer to a specific domain (rather than all three domains at once).
+
+<br>
 
 <img src="2_data_science_domain/assets/data_science_skills_where.png" width="800" />
 
-<br>
+*Horizontal bar chart visualizing the demand for unaddressed skills in the Data Science domain.*
+
+It is clear that R dominates the figure by a significant margin, appearing in approximately 35% of all Data Science job postings. After, Tableau, AWS, Spark, and TensorFlow follow. AWS is selected over Azure because it appears in more job postings, and, since TensorFlow is selected, PyTorch is also chosen as they are complementary machine learning skills.
+
+*Table presenting the chosen skills for the Data Science domain.*
 
 | Chosen Skill           | Short Description                     |
 |:---------------------|:-------------------------------------|
@@ -133,6 +141,10 @@ Python was the programming language that was used to primarily visualize the dat
 
 <h4 style="text-align:left;">3. <u>Data Engineering Skills</u></h4>
 
+The most in-demand skills for the Data Engineering domain are identified through the same process applied in the previous stage.
+
+*Table presenting the chosen skills for the Data Engineering domain.*
+
 | Chosen Skill           | Short Description                     |
 |:-------------:|:----------------------------------------------------------------------------------|
 | Scala        | High-level programming language used with Apache Spark for big data processing.   |
@@ -142,6 +154,10 @@ Python was the programming language that was used to primarily visualize the dat
 
 <h4 style="text-align:left;">4. <u>Senior Data Scientist Skills</u></h4>
 
+The same process is used to identify the most in-demand skills for the Senior Data Scientist role.
+
+*Table presenting the chosen skills for the Senior Data Scientist role.*
+
 | Chosen Skill   | Short Description                                                                 |
 |:-------------:|:----------------------------------------------------------------------------------|
 | SAS          | Statistical Software Suite                                                          |
@@ -150,11 +166,15 @@ Python was the programming language that was used to primarily visualize the dat
 
 <h4 style="text-align:left;">5. <u>Top-Paying Skills for the Senior Data Scientist Role</u></h4>
 
-<u>Bar chart - Unaddressed Skills</u>:
+The same process is also used to identify the highest-paying skills for the Senior Data Scientist role. However, in this case, the x axis represents the annual salary in US dollars.
 
 <img src="4_senior_data_scientist/4_III_highest_paying/b_top_paying_skills/assets/top_paying_unaddressed_skills_bar_charts.png" width="900" />
 
-<br>
+*Horizontal bar chart visualizing the highest-paying unaddressed skills for the Senior Data Scientist role.*
+
+Note that, C++ is usually preferred over C in Data Science for its high-performance and object-oriented features. The remaining skills are all selected.
+
+*Table presenting the chosen highest-paying skills for the Senior Data Scientist role.*
 
 | Chosen Skill | Average Salary Per Skill ($) | Short Description |
 |:----------:|:------------------------:|-----------------|
@@ -166,44 +186,61 @@ Python was the programming language that was used to primarily visualize the dat
 
 <h4 style="text-align:left;">6. <u>Pyramid Chart</u></h4>
 
+The analysis is summarized in the pyramid chart below, which illustrates the project scenario alongside the recommended skills at each stage of the individual’s learning path. The chart provides a visual and conceptual guide to help the reader navigate the project scenario in a clear and logical order.
+
 <img src="Pyramid_Chart.png" width="1000" />
 
-<br>
-
-
+*Pyramid Chart illustrating both the project scenario and all the recommended skills.*
 
 <h3 style="text-align:left;">B. <u>Sectors</u></h3>
 
-1. Industry Sectors
+<h4 style="text-align:left;">1. <u>Industry Sectors</u></h4>
+
+To extract the industry sectors that offer the most Senior Data Scientist positions, two SQL scripts and one Jupyter Notebook were used. The first script retrieved the companies offering the most Senior Data Scientist positions alongside the counts of such positions. The second script categorized these companies into sectors using the CASE expression, and extracted these sectors along with their market share (= total number of jobs offered by companies within the same sector divided by the total number of jobs offered by all companies that offer at least 25 Senior Data Scientist positions.). Finally, the Jupyter Notebook was used to create the bar chart displayed below, which depicts the market share each industry sector holds.
 
 <img src="4_senior_data_scientist/4_II_companies_most_jobs/assets/sectors.png" width="1100"/>
 
-<br>
+*Horizontal bar chart visualizing the market share held by each sector for Senior Data Scientist positions.*
 
-2. Companies of the Healthcare & Biotechnology Sector
+The chart distinctly illustrates that the Recruitment industry leads in providing the highest number of Senior Data Scientist roles, followed by the Banking & Financial Services sector. Besides these, the Consulting, Healthcare & Biotechnology, Technology, and Retail sectors also offer numerous such positions.
+
+<h4 style="text-align:left;">2. <u>Companies of the Healthcare & Biotechnology Sector</u></h4>
+
+The second script of the previous section was adopted to solely extract the companies of the 'Healthcare & Biotechnology' sector. Then, a Jupyter Notebook was used to create the bar chart displayed below, which illustrates the number of Senior Data Scientist job postings held by each company of that sector. 
 
 <img src="4_senior_data_scientist/4_II_companies_most_jobs/assets/healthcare_biotechnology_sector.png" width="1100"/>
 
-<br>
+*Horizontal bar chart visualizing the companies of the Healthcare & Biotechnology sector that offer the most Senior Data Scientist positions.*
+
+The chart clearly shows that the 'Healthcare Providers and Payers' subsector leads in offering the highest number of Senior Data Scientist positions (including the top 4 companies), followed respectively by the 'Contract Research and Services' and 'Pharmaceuticals' subsectors.
+- Companies of the 'Healthcare Providers and Payers' Subsector: UnitedHealth Group, CVS Health, Humana, and Elevance Health.
+- Companies of the 'Contract Research and Services' Subsector: IQVIA and Syneos Health
+- Companies of the 'Pharmaceuticals' Subsector: AstraZeneca, Johnson & Johnson, Pfizer, Novo Nordisk, AbbVie, Bristol Myers Squibb, Genentech, Merck, GSK, and Boehringer Ingelheim.
 
 <h3 style="text-align:left;">C. <u>Salary Distribution</u></h3>
 
+The following steps were taken to build the figure combining the histogram and the box plot of the salary distribution for the Senior Data Scientist role:
+- Creating the histogram by defining the bins, using `plt.hist()`, and then customizing the figure (adding vertical lines for the quartiles, a title, axes labels, ticks, and limits).
+- Creating the horizontal box plot by using `plt.boxplot()`, and then customizing it (setting the styles for the box, median line and outliers and removing the y-axis tick mark and label).
+- Combining them into a single figure by using `plt.subplots()` to create the figure and axes objects, and then employing the latter to recreate the previously constructed histogram and box plot.
+
+<br>
+
 ![histogram_and_boxplot](4_senior_data_scientist/4_III_highest_paying/a_highest_paying_seniorDS_jobs/assets/histogram_and_boxplot.png)
 
-The following table summarizes the features of the cleaned salary distribution:
+*Figure illustrating the salary distribution for the Senior Data Scientist role, combining a histogram and a box plot.*
 
-| Salary Distribution Feature |  Value |
-|:-----:|:-------:|
-| Number of Entries | 1590 |
-| Box Plot Minimum | 55,000 |
-| Q1 = 25th Percentile | 125,000 |
-| Q2 = 50th Percentile | 155,000 |
-| Q3 = 75th Percentile | 173,000 |
-| Box Plot Maximum | 245,000 |
-| Mode | 157,500 |
-| IQR   | 48,000   |
-| Skewness | 3.1 |
-| Kurtosis | 31.4 |
+<h4 style="text-align:left;">1. <u>Center & Spread</u></h4>
+
+The salary distribution for Senior Data Scientists has a median of $155,000, indicating that half of these professionals earn less than this amount, while the other half earn more. The interquartile range (IQR) is $48,000, reflecting significant variability around the median and closely matching the standard deviation of $51,000. Furthermore, the mean ($153,653), median ($155,000), and mode ($157,500) are nearly identical. These characteristics collectively indicate features consistent with a **normal** distribution in the **central part** of the salary distribution.
+
+It is advisable to aim for a salary above the median, ideally between the 75th percentile and the maximum value of the box plot (**$173,000 to $245,000**), to achieve high-income status or potentially become an outlier later on.
+
+<h4 style="text-align:left;">2. <u>Shape</u></h4>
+
+The range of the entire dataset is significantly larger than the IQR ($845,000 vs $48,000), signaling the presence of significant high-end outliers, which is also visually evident in the box plot of the figure. The distribution displays a skewness value of 3.1, indicating a strong right skew. This means that while most salaries cluster around the median, there is a pronounced right tail of much higher salaries. Additionally, the kurtosis of the distribution is extremely high at 31.4, classifying it as highly leptokurtic. This sharp peak and heavy right tail suggest a substantial number of outliers significantly shaping the form of the distribution. Collectively, the high skewness and kurtosis indicate that the distribution adopts characteristics similar to a **log-normal** distribution at the **higher salary end**, mainly driven by the outliers.
+
+This pronounced variability at the upper end of the salary spectrum highlights the **potential for very high earnings** among Senior Data Scientists. While most professionals in this role earn within a more typical salary range near the median, a smaller subset achieves substantially greater compensation.
 
 <h2 style="text-align:left;">Skills Acquired</h2>
 
@@ -276,7 +313,24 @@ If the reader wants to delve right into the code files of each subproject, the l
 
 <u><h3 style="text-align:left;">Summary</h3></u>
 
+<h4 style="text-align:left;">A. <u>Skills</u></h4>
 
+- The findings suggest that aspiring Data Professionals should focus on developing a strong foundation in Python and SQL, while also gaining expertise in the selected Data Science skills, namely R, Tableau, AWS, Spark, TensorFlow, and PyTorch. 
+- Only then, they should move on to more niche skills such as Databricks and NoSQL regarding the Data Engineering skills, Hadoop concerning the Senior Data Scientist skills, and flow tools, C++, and Keras, with regards to the highest-paying skills for Senior Data Scientists.
+- The path from the foundational skills to the most specialized tools is highlighted in the pyramid chart, which illustrates the project scenario and the recommended skills at each stage.
+
+<h4 style="text-align:left;">B. <u>Sectors</u></h4>
+
+The analysis of the sectors and companies offering the most Senior Data Scientist positions revealed that:
+- The Recruitment and Banking & Financial Services sectors dominate the market for Senior Data Scientist positions, while the Consulting, Healthcare & Biotechnology, Technology, and Retail sectors also hold significant percentages of the market share.
+- In the Healthcare & Biotechnology sector, the companies of the 'Healthcare Providers and Payers' subsector (e.g., UnitedHealth Group and CVS Health) dominate the list, followed respectively by the 'Contract Research and Services' (IQVIA and Syneos Health) and 'Pharmaceuticals' (e.g., AstraZeneca, Johnson & Johnson, Pfizer) subsectors.
+
+<h4 style="text-align:left;">C. <u>Salary Distribution</u></h4>
+
+The analysis of the salary distribution for the Senior Data Scientist role uncovered several key insights:
+- The distribution has a median of $155,000, representing the typical earnings for a data professional in this role.
+- Targeting a salary above the median, ideally between $173,000 and $245,000, aligns with high-income status, while earnings beyond this range place a data professional among the top outliers.
+- There is significant variability at the upper end of the distribution, with a small subset of data professionals earning substantially more than those near the median.
 
 <u><h3 style="text-align:left;">Future Work</h3></u>
 

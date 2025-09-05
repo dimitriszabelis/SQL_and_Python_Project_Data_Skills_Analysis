@@ -4,7 +4,7 @@
 
 ### A. Extracting the Companies that Offer the Most Senior Data Scientist Jobs
 ---
-The first SQL script of this mini-project retrieves the companies that offer the most Senior Data Scientist jobs. To accomplish that, an inner join is used to access the names of the companies that offer at least one job. After that, filtering occurs to extract solely the Senior Data Scientist jobs. Then, the results are grouped by the company name to aggregate the job postings, excluding any companies that offer fewer than 25 Senior Data Scientist positions. Finally, the script retrieves the count of job postings for each qualifying company and orders the output in descending order based on that count.
+The first SQL script of this subproject retrieves the companies that offer the most Senior Data Scientist jobs. To accomplish that, an inner join is used to access the names of the companies that offer at least one job. After that, filtering occurs to extract solely the Senior Data Scientist jobs. Then, the results are grouped by the company name to aggregate the job postings, excluding any companies that offer fewer than 25 Senior Data Scientist positions. Finally, the script retrieves the count of job postings for each qualifying company and orders the output in descending order based on that count.
 
 [a_companies_most_jobs.sql](../4_senior_data_scientist/4_II_companies_most_jobs/scripts/a_companies_most_jobs.sql)
 

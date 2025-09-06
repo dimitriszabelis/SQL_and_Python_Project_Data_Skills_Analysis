@@ -334,3 +334,14 @@ The analysis of the salary distribution for the Senior Data Scientist role uncov
 
 <u><h3 style="text-align:left;">Future Work</h3></u>
 
+The project initially focused solely on SQL but later incorporated Python to facilitate data visualization. Utilizing a pre-cleaned dataset, the project does not encompass the full data science pipeline. Its primary objectives were to identify the most sought-after skills for data professionals through database queries, and to visualize and communicate the findings.
+
+The main limitation of this project is the existence of duplicate rows. These duplicates include, but may possibly extend beyond, the following:
+- The exact same job posting being posted multiple times. This usually happens either due to duplicate job postings or due to the same job opening being posted throughout the year at regular intervals to attract multiple candidates. In order to determine which one of the two alternatives occurs on each occasion, the date column of the respective rows should be considered, and more specifically, used as a filtering condition during the data retrieval phase, where only the first occurrence of a cluster of duplicate job postings is kept.
+- Similar job postings that appear to be different, but upon consideration are not. For example, in the ‘Sectors’ subproject, it was discovered that sometimes companies post job offerings with slightly different names (e.g., 'Jobleads-UK', 'Jobleads', 'JobLeads GmbH'). Once again, the respective postings should be analyzed separately to determine whether they are unique or not; if not, they may be skewing the results of the subproject (e.g., in favor of multinational companies having multiple international branches or subsidiaries).
+
+Besides that, there is one recommendation for further exploration, i.e., to conduct an in-depth statistical analysis of the salary distribution for the Senior Data Scientist role in order to extract hidden insights that may be present. Among other things, this analysis could include:
+- Analyzing the outliers separately to uncover why some professionals earn disproportionately more.
+- Modeling the log-normal salary distribution using regression analysis in R (e.g., application of linear regression to the log-transformed salary).
+
+A logical next step would be to acquire the full dataset that powers Luke Barousse’s [datanerd.tech](https://datanerd.tech/) app and navigate the entire data science pipeline while taking into account the previously mentioned suggestion for further exploration and the two limitations of the project.

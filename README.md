@@ -127,7 +127,7 @@ The most in-demand Data Science skills are retrieved and visualized in the same 
 
 *Horizontal bar chart visualizing the demand for unaddressed skills in the Data Science domain.*
 
-It is clear that R dominates the figure by a significant margin, appearing in approximately 35% of all Data Science job postings. After, Tableau, AWS, Spark, and TensorFlow follow. AWS is selected over Azure because it appears in more job postings, and, since TensorFlow is selected, PyTorch is also chosen as they are complementary machine learning skills.
+It is clear that R dominates the figure by a significant margin, appearing in approximately 35% of all Data Science job postings. After that, Tableau, AWS, Spark, and TensorFlow follow. AWS is selected over Azure because it appears in more job postings, and, since TensorFlow is selected, PyTorch is also chosen as they are complementary machine learning skills.
 
 *Table presenting the chosen skills for the Data Science domain.*
 
